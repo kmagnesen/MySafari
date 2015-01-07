@@ -47,6 +47,12 @@
     [self loadHome];
 }
 
+//-(void)updateButtons
+//{
+//    self.myBackButton.enabled = self.webView.canGoBack;
+//    self.myForwardButton.enabled = self.webView.canGoForward;
+//}
+
 -(void)loadHome {
     [self loadURL:@"http://google.com"];
 }
