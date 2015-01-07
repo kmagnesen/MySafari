@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -17,27 +16,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g6U-y1-qfW">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="538"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="KZX-gY-l0n"/>
-                                </connections>
-                            </webView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aag-cY-bxb">
+                            <textField clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter URL Text" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aag-cY-bxb">
                                 <rect key="frame" x="16" y="20" width="568" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardType="URL" returnKeyType="go"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="gpK-9i-FJl"/>
+                                </connections>
                             </textField>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f6i-wN-WlI">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="f6i-wN-WlI">
                                 <rect key="frame" x="282" y="281" width="37" height="37"/>
                                 <color key="color" red="0.0" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                             </activityIndicatorView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cXs-t6-I9Y" userLabel="Button View">
-                                <rect key="frame" x="0.0" y="538" width="600" height="62"/>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cXs-t6-I9Y" userLabel="Button View">
+                                <rect key="frame" x="0.0" y="542" width="600" height="58"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASV-yG-LpM">
-                                        <rect key="frame" x="8" y="16" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ASV-yG-LpM">
+                                        <rect key="frame" x="8" y="12" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="&lt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -45,8 +41,9 @@
                                             <action selector="onBackButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="z1m-wV-95J"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfI-dy-a8t">
-                                        <rect key="frame" x="562" y="16" width="30" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfI-dy-a8t">
+                                        <rect key="frame" x="562" y="12" width="30" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                         <state key="normal" title="&gt;">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -55,42 +52,48 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="64w-Iw-XER">
-                                        <rect key="frame" x="234" y="16" width="30" height="30"/>
-                                        <state key="normal" title="X">
+                                        <rect key="frame" x="180" y="4" width="63" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Stop">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
                                             <action selector="onStopLoadingButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ng8-Ui-uyW"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Td-s5-EiF">
+                                        <rect key="frame" x="349" y="4" width="93" height="48"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="Reload">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onReloadButtonPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="h73-z0-oxk"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="ASV-yG-LpM" firstAttribute="leading" secondItem="cXs-t6-I9Y" secondAttribute="leadingMargin" id="2YS-JN-NnK"/>
-                                    <constraint firstItem="nfI-dy-a8t" firstAttribute="trailing" secondItem="cXs-t6-I9Y" secondAttribute="trailingMargin" id="Pd0-5r-pat"/>
-                                    <constraint firstItem="nfI-dy-a8t" firstAttribute="baseline" secondItem="ASV-yG-LpM" secondAttribute="baseline" id="RGT-W4-tAa"/>
-                                    <constraint firstItem="ASV-yG-LpM" firstAttribute="top" secondItem="cXs-t6-I9Y" secondAttribute="top" constant="16" id="bm0-tU-KuC"/>
-                                    <constraint firstItem="ASV-yG-LpM" firstAttribute="centerY" secondItem="cXs-t6-I9Y" secondAttribute="centerY" id="gyx-GD-Fag"/>
-                                </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U05-th-ATj">
+                                <rect key="frame" x="277" y="554" width="30" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="+">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g6U-y1-qfW">
+                                <rect key="frame" x="0.0" y="56" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="vXZ-lx-hvc" id="KZX-gY-l0n"/>
+                                </connections>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cXs-t6-I9Y" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="13X-5e-N45"/>
-                            <constraint firstItem="cXs-t6-I9Y" firstAttribute="bottom" secondItem="2fi-mo-0CV" secondAttribute="top" id="2Xu-Jp-tNK"/>
-                            <constraint firstItem="Aag-cY-bxb" firstAttribute="centerX" secondItem="f6i-wN-WlI" secondAttribute="centerX" id="4sT-hG-weM"/>
-                            <constraint firstAttribute="trailing" secondItem="g6U-y1-qfW" secondAttribute="trailing" id="6Ys-hc-4Ku"/>
-                            <constraint firstItem="g6U-y1-qfW" firstAttribute="leading" secondItem="cXs-t6-I9Y" secondAttribute="leading" id="IWw-Id-4vq"/>
-                            <constraint firstItem="f6i-wN-WlI" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" constant="281" id="WAo-Ck-aRa"/>
-                            <constraint firstItem="cXs-t6-I9Y" firstAttribute="centerX" secondItem="f6i-wN-WlI" secondAttribute="centerX" id="Wiq-9c-Ofj"/>
-                            <constraint firstItem="g6U-y1-qfW" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="YIL-xh-0Tl"/>
-                            <constraint firstItem="cXs-t6-I9Y" firstAttribute="top" secondItem="g6U-y1-qfW" secondAttribute="bottom" id="lbv-gC-y4c"/>
-                            <constraint firstItem="Aag-cY-bxb" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="sM0-O1-z76"/>
-                            <constraint firstItem="g6U-y1-qfW" firstAttribute="trailing" secondItem="cXs-t6-I9Y" secondAttribute="trailing" id="v88-Jq-Phg"/>
-                            <constraint firstItem="Aag-cY-bxb" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="ymH-sO-Xbq"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="myBackButton" destination="ASV-yG-LpM" id="hNI-4V-yec"/>
+                        <outlet property="myForwardButton" destination="nfI-dy-a8t" id="DxY-Xq-ORH"/>
                         <outlet property="spinner" destination="f6i-wN-WlI" id="YXI-Ky-wbh"/>
                         <outlet property="urlTextField" destination="Aag-cY-bxb" id="94C-fR-Wy8"/>
                         <outlet property="webView" destination="g6U-y1-qfW" id="88h-dM-yTG"/>
@@ -98,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-185" y="-33"/>
+            <point key="canvasLocation" x="-167" y="-327"/>
         </scene>
     </scenes>
 </document>
