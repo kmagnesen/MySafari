@@ -8,21 +8,31 @@
 
 #import "ViewController.h"
 
-@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate>
+@interface ViewController () <UIWebViewDelegate, UITextFieldDelegate, UIScrollViewAccessibilityDelegate, UIScrollViewDelegate>
+@property (strong, nonatomic) IBOutlet UINavigationBar *navBar;
+
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (strong, nonatomic) IBOutlet UIWebView *webView;
 @property (strong, nonatomic) IBOutlet UITextField *urlTextField;
 @property (strong, nonatomic) IBOutlet UIButton *myBackButton;
 @property (strong, nonatomic) IBOutlet UIButton *myForwardButton;
+@property (strong, nonatomic) IBOutlet UIButton *onPlusButtonPressed;
 
 @end
 
 @implementation ViewController
 
+
 -(void)loadURL:(NSString *)urlString {
     NSURL *url = [NSURL URLWithString:urlString];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest: urlRequest];
+}
+- (IBAction)onPlusButtonPressed:(id)sender {
+
+    UIAlertView *comingSoonAlert = [[UIAlertView alloc] initWithTitle:@"Coming Soon!" message:@"Additional browser windows." delegate:self cancelButtonTitle:@"Close" otherButtonTitles: nil];
+
+    [comingSoonAlert show];
 }
 
 - (IBAction)onReloadButtonPressed:(id)sender {
@@ -40,6 +50,7 @@
 
 - (IBAction)onBackButtonPressed:(id)sender {
     [self.webView goBack];
+
 }
 
 - (void)viewDidLoad {
@@ -52,7 +63,7 @@
 //    self.myBackButton.enabled = self.webView.canGoBack;
 //    self.myForwardButton.enabled = self.webView.canGoForward;
 //}
-///
+
 
 -(void)loadHome {
     [self loadURL:@"http://google.com"];
@@ -60,10 +71,16 @@
 
 -(void)webViewDidStartLoad:(UIWebView *)webView{
     [self.spinner startAnimating];
+
 }
 
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     [self.spinner stopAnimating];
+
+    NSString *displayURL = webView.request.URL.absoluteString;
+    self.urlTextField.text = displayURL;
+
+    self.navBar.topItem.title = [webView stringByEvaluatingJavaScriptFromString:@"document.title"];
 
     if (self.webView.canGoForward == YES) {
         [self.myForwardButton setEnabled:YES];
@@ -91,7 +108,22 @@
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self loadURL: textField.text];
+
+    NSURL *userURL = [NSURL URLWithString:self.urlTextField.text];
+    NSString *userURLString = self.urlTextField.text;
+    NSURLRequest *urlRequest = [NSURLRequest requestWithURL:userURL];
+
+    NSString *myHTTP = @"http://";
+
+    if ([userURLString hasPrefix:@"http://"] || [userURLString hasPrefix:@"http://"]) {
+        [self.webView loadRequest:urlRequest];
+    } else {
+        NSURL *myHTTPResult = [NSURL URLWithString:[myHTTP stringByAppendingString:userURLString]];
+        NSURLRequest *urlRequest1 = [NSURLRequest requestWithURL:myHTTPResult];
+
+        [self.webView loadRequest:urlRequest1];
+
+    }
     return YES;
 }
 
